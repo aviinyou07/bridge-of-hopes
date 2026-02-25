@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+
+          @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@300;400&display=swap');
+
+        body { font-family: 'Inter', sans-serif; }
+
+          
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-scroll {
+            display: flex;
+            width: max-content;
+            animation: scroll 20s linear infinite;
+        }
+        .animate-scroll:hover {
+            animation-play-state: paused;
+        }
+     
+     
+    
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-infinite-scroll {
+            display: flex;
+            width: max-content;
+            animation: scroll 60s linear infinite;
+        }
+        /* Custom Red Primary Color */
+        .bg-red-primary { background-color: #e11d48; } 
+
+        
+        body { font-family: 'Roboto', sans-serif; }
+        h1, h2, h3, .heading-font { font-family: 'Oswald', sans-serif; text-transform: uppercase; }
+        
+        .bg-custom-green { background-color: #4db848; }
+        .text-red-primary { color: #d62027; }
+      
+    </style>
+    
+</head>
+<body >
+
+    
+ <nav class="bg-white border-b border-gray-100 sticky top-0 z-50">
+    <div class="flex justify-between items-center px-6 py-2 max-w-7xl mx-auto">
+        <a href="/" class="flex items-center space-x-2">
+            <img src="/images/logo-B3tSUuyg.png" alt="Logo" class="h-10 md:h-12">
+        </a>
+
+        <div class="hidden lg:flex items-center space-x-6 text-[11px] font-bold uppercase tracking-widest text-gray-700">
+            <a href="/about" class="hover:text-red-600 transition-colors">About Us</a>
+            <a href="/what_we_do" class="hover:text-red-600 transition-colors">What We Do</a>
+            
+            <a href="/donate" class="bg-[#e21f26] text-white px-6 py-2.5 font-bold hover:bg-red-700 transition-all shadow-sm">
+                DONATE NOW
+            </a>
+        </div>
+
+        <div class="lg:hidden flex items-center space-x-4">
+ <a href="/donate" class="bg-[#e21f26] text-white px-4 py-2 text-[10px] font-bold uppercase">Donate</a>
+            <button id="menu-btn" class="text-gray-600 focus:outline-none">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100 px-6 py-4 space-y-4 shadow-lg">
+        <a href="/about" class="block text-xs font-bold uppercase tracking-widest text-gray-700">About Us</a>
+        <a href="/what_we_do" class="block text-xs font-bold uppercase tracking-widest text-gray-700">What We Do</a>
+        
+       
+        
+    </div>
+</nav>

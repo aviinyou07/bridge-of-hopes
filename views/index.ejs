@@ -1,0 +1,455 @@
+<%- include('partials/header', { title: 'Home | Children\'s Vision Organization' }) %>
+
+<main class="bg-[#1a2b2b]"> 
+
+
+<div class="relative w-full h-[400px] overflow-hidden bg-black">
+        
+        <div class="animate-infinite-scroll h-full">
+            
+            <div class="flex h-full w-full">
+                <img src="/images/ikefwdzjrkinxl9ktpu2.jpg" class="flex-shrink-0 w-screen h-full object-cover opacity-50" alt="Hero 1">
+                <img src="/images/la5pankyrwmsu6nc7y96.jpg" class="flex-shrink-0 w-screen h-full object-cover opacity-50" alt="Hero 2">
+                <img src="/images/j4pgebxkzqskjtdowyta.jpg" class="flex-shrink-0 w-screen h-full object-cover opacity-50" alt="Hero 3">
+                <img src="/images/lau4p2inqwgpuw3yqfna.webp" class="flex-shrink-0 w-screen h-full object-cover opacity-50" alt="Hero 4">
+                <img src="/images/lxu2xe1o8ugkm3tk9edd.jpg" class="flex-shrink-0 w-screen h-full object-cover opacity-50" alt="Hero 5">
+                <img src="/images/nry1pliuovcdfni471gt.jpg" class="flex-shrink-0 w-screen h-full object-cover opacity-50" alt="Hero 6">
+            </div>
+
+            <div class="flex h-full w-full">
+                <img src="/images/ikefwdzjrkinxl9ktpu2.jpg" class="flex-shrink-0 w-screen h-full object-cover opacity-50" alt="Hero 1">
+                <img src="/images/la5pankyrwmsu6nc7y96.jpg" class="flex-shrink-0 w-screen h-full object-cover opacity-50" alt="Hero 2">
+                <img src="/images/j4pgebxkzqskjtdowyta.jpg" class="flex-shrink-0 w-screen h-full object-cover opacity-50" alt="Hero 3">
+                <img src="/images/lau4p2inqwgpuw3yqfna.webp" class="flex-shrink-0 w-screen h-full object-cover opacity-50" alt="Hero 4">
+                <img src="/images/lxu2xe1o8ugkm3tk9edd.jpg" class="flex-shrink-0 w-screen h-full object-cover opacity-50" alt="Hero 5">
+                <img src="/images/nry1pliuovcdfni471gt.jpg" class="flex-shrink-0 w-screen h-full object-cover opacity-50" alt="Hero 6">
+            </div>
+        </div>
+
+        <div class="absolute bottom-12 left-0 bg-[#4caf50] text-white px-8 py-4 z-10 shadow-lg">
+            <h2 class="text-3xl font-bold italic tracking-tight uppercase">
+                CREATING IRREVERSIBLE POSITIVE CHANGE WITH AND FOR CHILDREN
+            </h2>
+        </div>
+    </div>
+
+ 
+
+ <section class="relative min-h-[550px] bg-white flex items-center overflow-hidden py-12 lg:py-0">
+    <div class="absolute inset-0 z-0">
+        <img src="/images/donation-banner-xz3IlHsG.webp" alt="Background" class="w-full h-full object-cover object-left opacity-90">
+        <div class="absolute inset-0 bg-gradient-to-r from-white/95 via-white/40 to-transparent"></div>
+    </div>
+
+    <div class="container mx-auto px-4 md:px-12 relative z-10">
+        <div class="flex flex-col lg:flex-row items-center justify-between gap-12">
+            
+            <div class="max-w-xl text-center lg:text-left">
+                
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-2xl w-full max-w-[500px]">
+                
+                <div class="flex w-full mb-4 border rounded-lg overflow-hidden">
+                    <button type="button" id="giveOnceBtn" onclick="toggleDonation(false)" class="flex-1 py-3 bg-[#4db748] text-white font-semibold transition">
+                        Give Once
+                    </button>
+                    <button type="button" id="giveMonthlyBtn" onclick="toggleDonation(true)" class="flex-1 py-3 bg-white text-black border-l font-semibold transition">
+                        Give Monthly
+                    </button>
+                </div>
+
+                <p class="font-bold mb-3 text-gray-800">Please select your donation amount</p>
+                
+                <div class="grid grid-cols-3 gap-2 mb-4">
+                    <button type="button" onclick="setAmount(5000, this)" class="amt-btn border border-gray-300 py-2.5 rounded hover:border-[#4caf50] hover:bg-green-50 transition font-medium">₹5000</button>
+                    <button type="button" onclick="setAmount(2500, this)" class="amt-btn border border-gray-300 py-2.5 rounded hover:border-[#4caf50] hover:bg-green-50 transition font-medium">₹2500</button>
+                    <button type="button" onclick="setAmount(2000, this)" class="amt-btn border border-gray-300 py-2.5 rounded hover:border-[#4caf50] hover:bg-green-50 transition font-medium">₹2000</button>
+                    <button type="button" onclick="setAmount(1500, this)" class="amt-btn border border-gray-300 py-2.5 rounded hover:border-[#4caf50] hover:bg-green-50 transition font-medium">₹1500</button>
+                    <button type="button" onclick="setAmount(1000, this)" class="amt-btn border border-gray-300 py-2.5 rounded hover:border-[#4caf50] hover:bg-green-50 transition font-medium">₹1000</button>
+                    <button type="button" onclick="setAmount(500, this)" class="amt-btn border border-gray-300 py-2.5 rounded hover:border-[#4caf50] hover:bg-green-50 transition font-medium">₹500</button>
+                </div>
+
+                <div class="relative mb-3">
+                    <span class="absolute left-3 top-2 text-gray-500">₹</span>
+<input type="text" id="customAmount" inputmode="numeric" pattern="[0-9]*"
+       oninput="handleInput(this.value)"
+       class="w-full border border-gray-300 pl-7 p-2.5 rounded focus:ring-2 focus:ring-[#4caf50] outline-none transition"
+       placeholder="Enter other amount">                </div>
+
+                <p class="text-center mb-6 text-sm text-gray-600">
+                    You Pledge to serve <strong id="mealCount" class="text-green-600 text-lg">0</strong> nutritious meals<span id="mealFrequencyText"></span>.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <button type="button" onclick="proceedToDonate()" class="flex-[2] bg-[#4caf50] hover:bg-[#43a047] text-white font-bold py-4 rounded-lg transition shadow-lg active:scale-95">
+                        Proceed to Donate
+                    </button>
+                    
+                    <button type="button" onclick="openShareModal()" class="flex-1 flex items-center justify-center gap-2 border-2 border-[#4caf50] text-[#4caf50] hover:bg-green-50 font-bold py-4 rounded-lg transition active:scale-95">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
+                            <polyline points="16 6 12 2 8 6"></polyline>
+                            <line x1="12" y1="2" x2="12" y2="15"></line>
+                        </svg>
+                        Share
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <section class="">
+ 
+
+    <div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            
+            <div class="bg-[#c2c7c7] border-[6px] border-[#223333] p-6 text-[#1a1a1a]">
+                <div class="flex justify-center mb-4">
+                    <img src="/images/logo-B3tSUuyg.png" alt="Bridge of Hopes Logo" class="h-16">
+                </div>
+                
+                <h2 class="text-center text-xl font-black uppercase mb-4">Meet Our NGO Partner</h2>
+                
+                <p class="text-xs leading-relaxed mb-6">
+                    Bridge of Hopes was initiated in 2005 when a group of friends came together with the intention of giving back to the society. While our focus as a development organisation has been first and foremost to work on the ground for bringing positive change in the lives of the less privileged children and families, we have been making equal efforts to sustain this change, by sensitising and engaging the privileged masses towards their Social Responsibility.
+                </p>
+
+                <h3 class="font-bold text-sm mb-3">CSR Activities for Queens & Contestants in Beauty Pageants</h3>
+                
+                <ul class="text-[10px] space-y-3 leading-tight">
+                    <li><strong class="text-xs">1. Community Service & Awareness Campaigns:</strong> Contestants engage in activities that raise awareness about important social issues such as: Women Empowerment & Child Education, Mental Health and Wellness, Domestic Violence Prevention, Menstrual Hygiene Awareness, Anti-bullying and Body Positivity.</li>
+                    <li><strong class="text-xs">2. Fundraising & Charity Drives:</strong> Queens and contestants organize or participate in events that raise funds for NGOs or social causes, such as: Charity Walks or Marathons, Fundraising Galas or Cultural Events, Donation Campaign for Underprivileged Children or Rural Women.</li>
+                    <li><strong class="text-xs">3. Environmental Sustainability:</strong> Pageant Ambassadors often promote eco-friendly initiatives: Tree Plantation & Beach Clean-ups, Waste Segregation and Recycling Drives, "Go Green" and "Save Water" movements.</li>
+                </ul>
+            </div>
+
+            <div class="bg-[#c2c7c7] border-[6px] border-[#223333] p-6 text-[#1a1a1a]">
+                <div class="flex justify-center mb-4">
+                    <img src="/images/qi3t77utzuky6lnwconf.jpg" alt="CSR Image" class="w-full h-48 object-cover border border-gray-400">
+                </div>
+
+                <div class="bg-[#b39e5e] py-1 text-center mb-4 border-y border-black/20">
+                    <h2 class="text-xl font-black uppercase">CSR Opportunities</h2>
+                </div>
+
+                <div class="space-y-4">
+                    <p class="text-[11px] leading-tight">
+                        <strong class="text-xs">Empowering Change, One Cause at a Time</strong> - True beauty lies in the difference we make in the world. At Miss & Mrs Asia Universe, we are not just a pageant, we are a movement for positive change...
+                    </p>
+
+                    <h3 class="font-black text-sm uppercase italic underline">Our Purpose</h3>
+                    
+                    <ul class="text-[10px] space-y-2 leading-tight">
+                        <li><strong>Education for Empowerment:</strong> Scholarships, mentorship, and initiatives...</li>
+                        <li><strong>Health & Wellness Advocacy:</strong> Addressing mental health, self-care, and providing access to healthcare services for those in need.</li>
+                        <li><strong>Building Stronger Communities:</strong> Collaborating with global organizations to create meaningful and sustainable impact.</li>
+                    </ul>
+
+                    <p class="text-[10px] italic leading-tight mt-4">
+                        <strong>Every Contestant A Voice for Change:</strong> Our queens are not only contestants, they are ambassadors for change. With every crown comes a responsibility to uplift others, empower communities, and create lasting impact.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+         
+
+         
+    </div>
+
+
+ 
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            
+            <div class="bg-[#d1d5db] rounded-lg p-8 flex flex-col items-center text-center shadow-inner">
+                <div class="mb-4 overflow-hidden rounded shadow-md">
+                    <img src="/images/ahumgdlkmj42dtsu5pbd.jpg" alt="Plantation" class="w-full max-w-[350px] h-48 object-cover">
+                </div>
+                <h3 class="text-2xl font-black text-[#2d3748] mb-2 uppercase tracking-tight">Plantation</h3>
+                <p class="text-gray-800 text-sm leading-relaxed max-w-sm">
+                    Join our efforts to restore the environment and make the world greener.
+                </p>
+            </div>
+
+            <div class="bg-[#d1d5db] rounded-lg p-8 flex flex-col items-center text-center shadow-inner">
+                <div class="mb-4 overflow-hidden rounded shadow-md">
+                    <img src="/images/awljbb6iboffvff0mggx.jpg" alt="Food Distribution" class="w-full max-w-[350px] h-48 object-cover">
+                </div>
+                <h3 class="text-2xl font-black text-[#2d3748] mb-2 uppercase tracking-tight">Food Distribution</h3>
+                <p class="text-gray-800 text-sm leading-relaxed max-w-sm">
+                    We work towards feeding the underprivileged, ensuring they have access to nutritious meals.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="py-4 px-4  max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            
+            <div class="bg-[#d1d5db] rounded-lg p-8 flex flex-col items-center text-center shadow-inner">
+                <div class="mb-4 overflow-hidden rounded shadow-md">
+                    <img src="/images/lxu2xe1o8ugkm3tk9edd.jpg
+
+
+
+" alt="Plantation" class="w-full max-w-[350px] h-48 object-cover">
+                </div>
+                <h3 class="text-2xl font-black text-[#2d3748] mb-2 uppercase tracking-tight">Senior Citizen Remedies </h3>
+                <p class="text-gray-800 text-sm leading-relaxed max-w-sm">
+                    We provide remedies and support for senior citizens, ensuring they live with dignity and care.
+                </p>
+            </div>
+
+            <div class="bg-[#d1d5db] rounded-lg p-8 flex flex-col items-center text-center shadow-inner">
+                <div class="mb-4 overflow-hidden rounded shadow-md">
+                    <img src="/images/ueckir8qjumcs14z6lru.jpg" alt="Women Empowerment" class="w-full max-w-[350px] h-48 object-cover">
+                </div>
+                <h3 class="text-2xl font-black text-[#2d3748] mb-2 uppercase tracking-tight">Women Empowerment</h3>
+                <p class="text-gray-800 text-sm leading-relaxed max-w-sm">
+                    We empower women through various programs that promote education, health, and career opportunities..
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="py-4 px-4  max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            
+            <div class="bg-[#d1d5db] rounded-lg p-8 flex flex-col items-center text-center shadow-inner">
+                <div class="mb-4 overflow-hidden rounded shadow-md">
+                    <img src="/images/h3bi6qbgtbhdbqf1et16.jpg" alt="Plantation" class="w-full max-w-[350px] h-48 object-cover">
+                </div>
+                <h3 class="text-2xl font-black text-[#2d3748] mb-2 uppercase tracking-tight">Child Education</h3>
+                <p class="text-gray-800 text-sm leading-relaxed max-w-sm">
+                    Education is a fundamental right. We are working towards providing children access to quality education.
+                </p>
+            </div>
+
+            <div class="bg-[#d1d5db] rounded-lg p-8 flex flex-col items-center text-center shadow-inner">
+                <div class="mb-4 overflow-hidden rounded shadow-md">
+                    <img src="/images/la5pankyrwmsu6nc7y96.jpg
+
+
+
+" alt="Cancer Treatment" class="w-full max-w-[350px] h-48 object-cover">
+                </div>
+                <h3 class="text-2xl font-black text-[#2d3748] mb-2 uppercase tracking-tight">Cancer Treatment</h3>
+                <p class="text-gray-800 text-sm leading-relaxed max-w-sm">
+We provide financial support and emotional assistance for those battling cancer.                </p>
+            </div>
+
+        </div>
+    </section>
+
+    </main>
+    <section class="bg-white py-10">
+
+    <div class="mb-16">
+        <h2 class="text-center text-2xl font-black text-gray-700 uppercase tracking-widest mb-8 drop-shadow-md">
+            Our CSR Activities
+        </h2>
+        
+        <div class="relative overflow-hidden w-full bg-white py-4">
+            <div class="animate-scroll">
+                <div class="flex gap-2 px-4">
+                    <img src="/images/cpigr5tracz5nrgoth5s.jpg" class="h-64" alt="CSR 1">
+                    <img src="/images/edw76joesdfoe1cthofd.jpg" class="h-64" alt="CSR 2">
+                    <img src="/images/flivnqgvyl0wbzhyuetb.jpg" class="h-64" alt="CSR 3">
+                </div>
+                <div class="flex gap-4 px-4">
+                    <img src="/images/g0ctzqqlf1vd5f1lqiyy.jpg" class="h-64 " alt="CSR 1">
+                    <img src="/images/ikefwdzjrkinxl9ktpu2.jpg" class="h-64 " alt="CSR 2">
+                    <img src="/images/j4pgebxkzqskjtdowyta.jpg" class="h-64 " alt="CSR 3">
+                </div>
+            </div>
+        </div>
+    </div>
+
+  
+
+    </section>
+
+<div id="shareModal" class="fixed inset-0 z-[120] hidden bg-black/50 backdrop-blur-sm items-end sm:items-center justify-center" onclick="closeShareModal()">
+    <div class="w-full sm:max-w-md bg-white rounded-t-2xl sm:rounded-2xl shadow-2xl p-5 sm:p-6" onclick="event.stopPropagation()">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-bold text-gray-800">Share This Appeal</h3>
+            <button type="button" onclick="closeShareModal()" class="text-gray-400 hover:text-gray-700 text-2xl leading-none">&times;</button>
+        </div>
+
+        <p class="text-sm text-gray-600 mb-5">Choose a sharing option:</p>
+
+        <div class="space-y-3">
+            <button type="button" onclick="shareOnWhatsApp()" class="w-full flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold py-3 rounded-lg transition">
+                <i class="fa-brands fa-whatsapp text-lg"></i>
+                Share on WhatsApp
+            </button>
+
+            <button type="button" id="copyShareBtn" onclick="copyShareText()" class="w-full flex items-center justify-center gap-2 border border-gray-300 hover:bg-gray-50 text-gray-700 font-semibold py-3 rounded-lg transition">
+                <i class="fa-regular fa-copy"></i>
+                Copy to Clipboard
+            </button>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer') %>
+
+<script>
+let baseAmount = 0;       // Original selected amount (like 2500)
+let finalAmount = 0;      // Actual payable amount
+let donationType = 'once';
+
+function setAmount(amount, element) {
+    baseAmount = amount;
+
+    calculateFinal();
+    updateUI();
+    highlightButton(element);
+}
+
+function handleInput(value) {
+    const numericValue = Number(value) || 0;
+
+    if (donationType === 'monthly') {
+        baseAmount = numericValue / 12;
+    } else {
+        baseAmount = numericValue;
+    }
+
+    calculateFinal();
+    updateUI();
+    clearPresetHighlight();
+}
+
+function toggleDonation(isMonthly) {
+    donationType = isMonthly ? 'monthly' : 'once';
+
+    const onceBtn = document.getElementById('giveOnceBtn');
+    const monthlyBtn = document.getElementById('giveMonthlyBtn');
+
+    if (isMonthly) {
+        monthlyBtn.className = 'flex-1 py-3 bg-[#4db748] text-white font-semibold transition';
+        onceBtn.className = 'flex-1 py-3 bg-white text-black border-r font-semibold transition';
+    } else {
+        onceBtn.className = 'flex-1 py-3 bg-[#4db748] text-white font-semibold transition';
+        monthlyBtn.className = 'flex-1 py-3 bg-white text-black border-l font-semibold transition';
+    }
+
+    calculateFinal();
+    updateUI();
+}
+
+function calculateFinal() {
+    if (donationType === 'monthly') {
+        finalAmount = Math.round(baseAmount * 12);
+    } else {
+        finalAmount = Math.round(baseAmount);
+    }
+}
+
+function updateUI() {
+    document.getElementById('customAmount').value = finalAmount;
+
+    const meals = Math.floor(finalAmount / 50);
+    document.getElementById('mealCount').innerText = meals;
+
+    document.getElementById('mealFrequencyText').innerText =
+        donationType === 'monthly'
+            ? ` (₹${finalAmount} for 12 months total)`
+            : '';
+}
+
+function highlightButton(element) {
+    clearPresetHighlight();
+    if (element) {
+        element.classList.add('bg-green-600', 'text-white', 'border-green-600');
+        element.classList.remove('border-gray-300');
+    }
+}
+
+function clearPresetHighlight() {
+    document.querySelectorAll('.amt-btn').forEach((btn) => {
+        btn.classList.remove('bg-green-600', 'text-white', 'border-green-600');
+        btn.classList.add('border-gray-300');
+    });
+}
+
+function proceedToDonate() {
+    if (finalAmount < 10) {
+        alert('Please select or enter a valid donation amount (minimum ₹10).');
+        return;
+    }
+
+    const params = new URLSearchParams({
+        amount: String(finalAmount),
+        type: donationType,
+    });
+
+    window.location.href = `/donate?${params.toString()}`;
+}
+
+function openShareModal() {
+    document.getElementById('shareModal').classList.remove('hidden');
+    document.getElementById('shareModal').classList.add('flex');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeShareModal() {
+    const shareModal = document.getElementById('shareModal');
+    shareModal.classList.add('hidden');
+    shareModal.classList.remove('flex');
+    document.body.style.overflow = 'auto';
+}
+
+function getShareText() {
+    return 'I am supporting India\'s children through Bridge of Hopes. Join me in making a difference.';
+}
+
+function getShareUrl() {
+    return `${window.location.origin}/donate`;
+}
+
+function shareOnWhatsApp() {
+    const whatsappText = `${getShareText()} ${getShareUrl()}`;
+    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(whatsappText)}`;
+    window.open(whatsappUrl, '_blank');
+}
+
+async function copyShareText() {
+    const shareContent = `${getShareText()} ${getShareUrl()}`;
+    const copyBtn = document.getElementById('copyShareBtn');
+    const originalText = copyBtn.innerHTML;
+
+    try {
+        if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(shareContent);
+        } else {
+            const textArea = document.createElement('textarea');
+            textArea.value = shareContent;
+            textArea.style.position = 'fixed';
+            textArea.style.opacity = '0';
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+        }
+
+        copyBtn.innerHTML = '<i class="fa-solid fa-check"></i> Copied';
+        setTimeout(() => {
+            copyBtn.innerHTML = originalText;
+        }, 1200);
+    } catch (_) {
+        alert('Copy failed. Please copy manually from browser address bar.');
+    }
+}
+</script>
+
+
+

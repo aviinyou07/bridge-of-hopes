@@ -1,0 +1,576 @@
+
+<%- include('partials/header', { title: 'Home | Children\'s Vision Organization' }) %>
+
+<main class="max-w-6xl mx-auto px-4 py-8 lg:flex lg:gap-12">
+    
+    <div class="lg:w-3/5">
+        <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&q=80&w=1000" alt="Children" class="w-full rounded shadow-sm mb-6">
+        
+        <h1 class="text-3xl font-bold text-gray-900 mb-4 uppercase">SUPPORT INDIA'S CHILDREN IN NEED</h1>
+        
+        <div class="space-y-4 text-sm leading-relaxed text-gray-700">
+            <p>Bridge of Hopes, also known as Save the Children, is a leading independent child rights NGO in India. Since our inception, we have reached over 14 million children across the country.</p>
+            <p>Your contribution helps us reach the most marginalized children, ensuring they have access to quality education, life-saving healthcare, and protection from all forms of violence and exploitation.</p>
+        </div>
+
+        <div class="mt-8">
+            <h3 class="font-bold text-lg mb-2 uppercase border-l-4 border-green-500 pl-3">Our Commitment</h3>
+            <p class="text-sm text-gray-600 leading-relaxed">We work on the ground every day and in times of crisis. Our programs are designed to address the unique challenges faced by children in India, from malnutrition to child labor.</p>
+        </div>
+    </div>
+
+    <div class="lg:w-2/5 mt-8 lg:mt-0">
+        <div class="bg-white p-6 rounded-xl shadow-2xl border border-gray-100 sticky top-6">
+            
+            <div class="flex w-full mb-6 border rounded-lg overflow-hidden">
+                <button type="button" id="giveOnceBtn" onclick="toggleDonationType('once')" class="flex-1 py-3 bg-[#4db748] text-white font-bold transition-colors">
+                    Give Once
+                </button>
+                <button type="button" id="giveMonthlyBtn" onclick="toggleDonationType('monthly')" class="flex-1 py-3 bg-white text-black border-l font-bold transition-colors">
+                    Give Monthly
+                </button>
+            </div>
+
+            <p class="font-bold mb-4 text-gray-800">Select donation amount (₹)</p>
+            
+            <div class="grid grid-cols-3 gap-3 mb-6">
+                <button type="button" onclick="setAmount(5000, this)" class="amt-btn border border-gray-300 py-2.5 rounded hover:border-[#4caf50] hover:bg-green-50 transition-all">₹5000</button>
+                <button type="button" onclick="setAmount(2500, this)" class="amt-btn border border-gray-300 py-2.5 rounded hover:border-[#4caf50] hover:bg-green-50 transition-all">₹2500</button>
+                <button type="button" onclick="setAmount(2000, this)" class="amt-btn border border-gray-300 py-2.5 rounded hover:border-[#4caf50] hover:bg-green-50 transition-all">₹2000</button>
+                <button type="button" onclick="setAmount(1500, this)" class="amt-btn border border-gray-300 py-2.5 rounded hover:border-[#4caf50] hover:bg-green-50 transition-all">₹1500</button>
+                <button type="button" onclick="setAmount(1000, this)" class="amt-btn border border-gray-300 py-2.5 rounded hover:border-[#4caf50] hover:bg-green-50 transition-all">₹1000</button>
+                <button type="button" onclick="setAmount(500, this)" class="amt-btn border border-gray-300 py-2.5 rounded hover:border-[#4caf50] hover:bg-green-50 transition-all">₹500</button>
+            </div>
+
+            <div class="relative mb-6">
+                <span class="absolute left-3 top-2 text-gray-400">₹</span>
+                <input type="text" id="customAmount" inputmode="numeric" pattern="[0-9]*" oninput="handleInput(this.value)" class="w-full border border-gray-300 pl-8 p-2.5 rounded focus:ring-2 focus:ring-green-500 outline-none" placeholder="Other Amount">
+            </div>
+
+            <p class="text-center mb-6 bg-green-50 py-2 rounded-lg">
+                You pledge to serve <strong id="mealCount" class="text-green-600 text-lg">0</strong> nutritious meals<span id="mealFrequencyText"></span>.
+            </p>
+
+            <div class="flex flex-col gap-3">
+                <button type="button" onclick="openDonorModal()" class="w-full bg-[#4caf50] hover:bg-[#43a047] text-white font-bold py-4 rounded-lg transition shadow-lg active:scale-95">
+                    Proceed to Donate
+       
+                </button>
+                <button type="button" onclick="openShareModal()" class="flex items-center justify-center gap-2 border-2 border-gray-200 text-gray-600 hover:bg-gray-50 font-bold py-3 rounded-lg transition">
+                   Share Appeal
+                </button>
+            </div>
+        </div>
+    </div>
+</main>
+
+<div id="donorModal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden transform transition-all animate-in fade-in zoom-in duration-200">
+        <div class="p-8">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-gray-800">Contact Details</h3>
+                <button type="button" onclick="closeDonorModal()" class="text-gray-400 hover:text-gray-600 text-2xl">&times;</button>
+            </div>
+            
+            <div class="space-y-5">
+                <div>
+                    <label class="block text-xs font-bold uppercase text-gray-500 mb-1.5">Full Name</label>
+                    <input type="text" id="donorName" class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-green-500 outline-none" placeholder="Enter your name">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold uppercase text-gray-500 mb-1.5">Email Address</label>
+                    <input type="email" id="donorEmail" class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-green-500 outline-none" placeholder="name@email.com">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold uppercase text-gray-500 mb-1.5">Phone Number</label>
+                    <input type="tel" id="donorPhone" class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-green-500 outline-none" placeholder="10-digit mobile number">
+                </div>
+            </div>
+
+            <button type="button" onclick="triggerPaymentFlow()" id="payFinalBtn" class="w-full mt-8 bg-green-600 hover:bg-green-700 text-white font-black py-4 rounded-xl shadow-xl transition-all">
+                PAY ₹<span id="modalAmountDisplay">0</span> NOW
+            </button>
+            <p class="text-[11px] text-gray-400 text-center mt-4">Safe & Secure 256-bit encrypted payment gateway.</p>
+        </div>
+    </div>
+</div>
+
+<div id="shareModal" class="fixed inset-0 z-[120] hidden bg-black/50 backdrop-blur-sm items-end sm:items-center justify-center" onclick="closeShareModal()">
+    <div class="w-full sm:max-w-md bg-white rounded-t-2xl sm:rounded-2xl shadow-2xl p-5 sm:p-6" onclick="event.stopPropagation()">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-bold text-gray-800">Share This Appeal</h3>
+            <button type="button" onclick="closeShareModal()" class="text-gray-400 hover:text-gray-700 text-2xl leading-none">&times;</button>
+        </div>
+
+        <p class="text-sm text-gray-600 mb-5">Choose a sharing option:</p>
+
+        <div class="space-y-3">
+            <button type="button" onclick="shareOnWhatsApp()" class="w-full flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold py-3 rounded-lg transition">
+                <i class="fa-brands fa-whatsapp text-lg"></i>
+                Share on WhatsApp
+            </button>
+
+            <button type="button" id="copyShareBtn" onclick="copyShareText()" class="w-full flex items-center justify-center gap-2 border border-gray-300 hover:bg-gray-50 text-gray-700 font-semibold py-3 rounded-lg transition">
+                <i class="fa-regular fa-copy"></i>
+                Copy to Clipboard
+            </button>
+        </div>
+    </div>
+</div>
+
+<div id="paymentResultModal" class="fixed inset-0 z-[110] hidden flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
+    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-lg overflow-hidden border border-gray-100">
+        <div id="paymentResultHeader" class="px-6 py-4 text-white bg-gray-700">
+            <div class="flex items-center justify-between">
+                <h3 class="text-xl font-bold">Transaction Status</h3>
+                <button type="button" onclick="closePaymentResultModal()" class="text-white/80 hover:text-white text-2xl leading-none">&times;</button>
+            </div>
+            <p id="paymentResultSubtext" class="text-sm text-white/90 mt-1">Details of your transaction</p>
+        </div>
+
+        <div class="p-6 space-y-4">
+            <div class="flex items-center justify-between bg-gray-50 rounded-lg px-4 py-3 border border-gray-100">
+                <span class="text-sm font-semibold text-gray-600">Status</span>
+                <span id="paymentStatusBadge" class="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-gray-200 text-gray-700">Pending</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+                <div class="border border-gray-100 rounded-lg p-3 bg-white">
+                    <p class="text-gray-500 text-xs uppercase font-bold mb-1">Amount</p>
+                    <p id="paymentAmount" class="text-base font-bold text-gray-800">₹0.00</p>
+                </div>
+                <div class="border border-gray-100 rounded-lg p-3 bg-white">
+                    <p class="text-gray-500 text-xs uppercase font-bold mb-1">Date & Time</p>
+                    <p id="paymentDateTime" class="text-sm font-semibold text-gray-800">-</p>
+                </div>
+            </div>
+
+            <div class="space-y-2 text-sm border border-gray-100 rounded-lg p-4 bg-gray-50">
+                <div class="flex justify-between gap-3">
+                    <span class="text-gray-500">Transaction ID</span>
+                    <span id="paymentTxnId" class="font-semibold text-gray-800 text-right break-all">-</span>
+                </div>
+                <div class="flex justify-between gap-3">
+                    <span class="text-gray-500">Gateway Transaction ID</span>
+                    <span id="paymentGatewayTxnId" class="font-semibold text-gray-800 text-right break-all">-</span>
+                </div>
+                <div class="flex justify-between gap-3">
+                    <span class="text-gray-500">Payment Mode</span>
+                    <span id="paymentMode" class="font-semibold text-gray-800 text-right">-</span>
+                </div>
+                <div class="flex justify-between gap-3">
+                    <span class="text-gray-500">Bank Reference</span>
+                    <span id="paymentBankRef" class="font-semibold text-gray-800 text-right break-all">-</span>
+                </div>
+                <div class="flex justify-between gap-3">
+                    <span class="text-gray-500">Donor</span>
+                    <span id="paymentDonor" class="font-semibold text-gray-800 text-right break-all">-</span>
+                </div>
+                <div class="flex justify-between gap-3">
+                    <span class="text-gray-500">Email</span>
+                    <span id="paymentEmail" class="font-semibold text-gray-800 text-right break-all">-</span>
+                </div>
+            </div>
+
+            <p id="paymentMessage" class="text-sm text-gray-700 bg-blue-50 border border-blue-100 rounded-lg px-4 py-3">
+                Transaction update
+            </p>
+
+            <button type="button" onclick="closePaymentResultModal()" class="w-full bg-gray-900 hover:bg-black text-white font-semibold py-3 rounded-lg transition">
+                Close
+            </button>
+        </div>
+    </div>
+</div>
+
+
+    <section class="bg-gray-50 py-16 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-5xl font-black text-red-primary leading-none">3,51,377*</h2>
+                <p class="text-lg font-bold text-gray-600 uppercase mt-2">Children reached across India</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                <div class="bg-[#e91e63] p-5 text-white rounded shadow-md">
+                    <div class="text-2xl font-bold">1,21,430</div>
+                    <div class="text-[9px] uppercase font-bold opacity-80 mt-1">Education & Learning</div>
+                </div>
+                <div class="bg-[#009688] p-5 text-white rounded shadow-md">
+                    <div class="text-2xl font-bold">90,712</div>
+                    <div class="text-[9px] uppercase font-bold opacity-80 mt-1">Health & Nutrition</div>
+                </div>
+                <div class="bg-[#ff9800] p-5 text-white rounded shadow-md">
+                    <div class="text-2xl font-bold">61,007</div>
+                    <div class="text-[9px] uppercase font-bold opacity-80 mt-1">Child Protection</div>
+                </div>
+                <div class="bg-[#795548] p-5 text-white rounded shadow-md">
+                    <div class="text-2xl font-bold">40,758</div>
+                    <div class="text-[9px] uppercase font-bold opacity-80 mt-1">Emergency Relief</div>
+                </div>
+                <div class="bg-[#4caf50] p-5 text-white rounded shadow-md">
+                    <div class="text-2xl font-bold">26,320</div>
+                    <div class="text-[9px] uppercase font-bold opacity-80 mt-1">Poverty & Inclusion</div>
+                </div>
+                <div class="bg-[#673ab7] p-5 text-white rounded shadow-md">
+                    <div class="text-2xl font-bold">11,150</div>
+                    <div class="text-[9px] uppercase font-bold opacity-80 mt-1">Policy Advocacy</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-emerald-50">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <h2 class="text-2xl font-bold text-center mb-12 uppercase tracking-widest text-gray-800">Frequently Asked Questions</h2>
+            
+            <div class="space-y-3">
+                <details class="group bg-white rounded border border-emerald-100 overflow-hidden shadow-sm">
+                    <summary class="flex justify-between items-center p-4 cursor-pointer font-bold text-sm uppercase">
+                        How is my donation utilized?
+                        <i class="fa-solid fa-plus text-xs transition group-open:rotate-45"></i>
+                    </summary>
+                    <div class="p-4 pt-0 text-sm text-gray-600 border-t border-gray-50 leading-relaxed">
+                        Every donation is channeled directly into our core program areas: Health, Education, and Child Protection. We ensure that 80% of our funds go toward direct program costs for children.
+                    </div>
+                </details>
+
+                <details class="group bg-white rounded border border-emerald-100 overflow-hidden shadow-sm">
+                    <summary class="flex justify-between items-center p-4 cursor-pointer font-bold text-sm uppercase">
+                        Will I get a tax exemption certificate?
+                        <i class="fa-solid fa-plus text-xs transition group-open:rotate-45"></i>
+                    </summary>
+                    <div class="p-4 pt-0 text-sm text-gray-600 border-t border-gray-50 leading-relaxed">
+                        Yes. All donations to Bridge of Hopes are eligible for 50% tax exemption under Section 80G of the Income Tax Act. Your certificate will be sent via email within 10-15 days.
+                    </div>
+                </details>
+
+                <details class="group bg-white rounded border border-emerald-100 overflow-hidden shadow-sm">
+                    <summary class="flex justify-between items-center p-4 cursor-pointer font-bold text-sm uppercase">
+                        Can I donate offline via cheque?
+                        <i class="fa-solid fa-plus text-xs transition group-open:rotate-45"></i>
+                    </summary>
+                    <div class="p-4 pt-0 text-sm text-gray-600 border-t border-gray-50 leading-relaxed">
+                        Yes, you can send a cheque in favor of "Bridge of Hopes" to our National Office in New Delhi. Please include your contact details for the receipt.
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+<form id="payuForm" method="post" class="hidden"></form>
+
+<script>
+    const ENABLE_CLIENT_LOGS = false;
+    const clientLogger = {
+        error: (...args) => {
+            if (ENABLE_CLIENT_LOGS) {
+                console.error(...args);
+            }
+        }
+    };
+
+    let baseAmount = 0;
+    let finalAmount = 0;
+    let donationType = 'once';
+
+    function setAmount(amount, element) {
+        baseAmount = Number(amount) || 0;
+        calculateFinal();
+        updateUI();
+        highlightButton(element);
+    }
+
+    function handleInput(value) {
+        const numericValue = Number(value) || 0;
+
+        if (donationType === 'monthly') {
+            baseAmount = numericValue / 12;
+        } else {
+            baseAmount = numericValue;
+        }
+
+        calculateFinal();
+        updateUI();
+        clearPresetHighlight();
+    }
+
+    function calculateFinal() {
+        if (donationType === 'monthly') {
+            finalAmount = Math.round(baseAmount * 12);
+        } else {
+            finalAmount = Math.round(baseAmount);
+        }
+    }
+
+    function updateUI() {
+        document.getElementById('customAmount').value = finalAmount;
+
+        const meals = Math.floor(finalAmount / 50);
+        document.getElementById('mealCount').innerText = meals;
+
+        document.getElementById('mealFrequencyText').innerText =
+            donationType === 'monthly'
+                ? ` (₹${finalAmount} for 12 months total)`
+                : '';
+    }
+
+    function highlightButton(element) {
+        clearPresetHighlight();
+        if (element) {
+            element.classList.add('bg-green-600', 'text-white', 'border-green-600');
+            element.classList.remove('border-gray-300');
+        }
+    }
+
+    function clearPresetHighlight() {
+        document.querySelectorAll('.amt-btn').forEach((btn) => {
+            btn.classList.remove('bg-green-600', 'text-white', 'border-green-600');
+            btn.classList.add('border-gray-300');
+        });
+    }
+
+    // Modal Control
+    function openDonorModal() {
+            if (finalAmount < 500) {
+            alert("Please enter a valid donation amount (minimum ₹500)");
+            return;
+        }
+                document.getElementById('modalAmountDisplay').innerText = finalAmount;
+                document.getElementById('donorModal').classList.remove('hidden');
+        document.body.style.overflow = 'hidden'; // Prevent scroll
+    }
+
+    function closeDonorModal() {
+        document.getElementById('donorModal').classList.add('hidden');
+        document.body.style.overflow = 'auto';
+    }
+
+    // API & Payment Execution
+    async function triggerPaymentFlow() {
+        const donorData = {
+            name: document.getElementById('donorName').value.trim(),
+            email: document.getElementById('donorEmail').value.trim(),
+            phone: document.getElementById('donorPhone').value.trim(),
+            amount: finalAmount,
+            type: donationType,
+        };
+
+        if (!donorData.name || !donorData.email || donorData.phone.length < 10) {
+            alert("Please provide valid contact information.");
+            return;
+        }
+
+        const payBtn = document.getElementById('payFinalBtn');
+        payBtn.innerText = "REDIRECTING...";
+        payBtn.disabled = true;
+
+        try {
+            const response = await fetch("/donate", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(donorData)
+            });
+
+            if (!response.ok) {
+                let serverMessage = "Server error";
+                try {
+                    const errorPayload = await response.json();
+                    if (errorPayload && errorPayload.error) {
+                        serverMessage = errorPayload.error;
+                    }
+                } catch (_) {
+                    serverMessage = `Server error (${response.status})`;
+                }
+                throw new Error(serverMessage);
+            }
+
+            const data = await response.json();
+            const form = document.getElementById("payuForm");
+            form.action = data.action;
+            form.innerHTML = ''; // Clear previous fields
+
+            // Map PayU parameters to hidden inputs
+            for (const key in data.params) {
+                const input = document.createElement("input");
+                input.type = "hidden";
+                input.name = key;
+                input.value = data.params[key];
+                form.appendChild(input);
+            }
+
+            form.submit();
+        } catch (error) {
+            clientLogger.error("Payment failed:", error);
+            alert(`Could not connect to payment gateway: ${error.message}`);
+            payBtn.innerText = `PAY ₹${finalAmount} NOW`;
+            payBtn.disabled = false;
+        }
+    }
+
+    function toggleDonationType(type) {
+        const onceBtn = document.getElementById('giveOnceBtn');
+        const monthlyBtn = document.getElementById('giveMonthlyBtn');
+        donationType = type === 'monthly' ? 'monthly' : 'once';
+        
+        if (type === 'once') {
+            onceBtn.className = "flex-1 py-3 bg-[#4db748] text-white font-bold transition-colors";
+            monthlyBtn.className = "flex-1 py-3 bg-white text-black border-l font-bold transition-colors";
+        } else {
+            monthlyBtn.className = "flex-1 py-3 bg-[#4db748] text-white font-bold transition-colors";
+            onceBtn.className = "flex-1 py-3 bg-white text-black border-r font-bold transition-colors";
+        }
+
+        calculateFinal();
+        updateUI();
+    }
+
+    function closePaymentResultModal() {
+        document.getElementById('paymentResultModal').classList.add('hidden');
+        document.body.style.overflow = 'auto';
+
+        const params = new URLSearchParams(window.location.search);
+        params.delete('paymentStatus');
+        params.delete('txnid');
+        params.delete('gatewayTxnId');
+        params.delete('paymentMode');
+        params.delete('bankRef');
+        params.delete('amount');
+        params.delete('name');
+        params.delete('email');
+        params.delete('message');
+        params.delete('paidAt');
+
+        const cleanedQuery = params.toString();
+        const nextUrl = cleanedQuery ? `/donate?${cleanedQuery}` : '/donate';
+        window.history.replaceState({}, '', nextUrl);
+    }
+
+    function openShareModal() {
+        document.getElementById('shareModal').classList.remove('hidden');
+        document.getElementById('shareModal').classList.add('flex');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeShareModal() {
+        const shareModal = document.getElementById('shareModal');
+        shareModal.classList.add('hidden');
+        shareModal.classList.remove('flex');
+        document.body.style.overflow = 'auto';
+    }
+
+    function getShareText() {
+        return 'I am supporting India\'s children through Bridge of Hopes. Join me in making a difference.';
+    }
+
+    function getShareUrl() {
+        return `${window.location.origin}/donate`;
+    }
+
+    function shareOnWhatsApp() {
+        const whatsappText = `${getShareText()} ${getShareUrl()}`;
+        const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(whatsappText)}`;
+        window.open(whatsappUrl, '_blank');
+    }
+
+    async function copyShareText() {
+        const shareContent = `${getShareText()} ${getShareUrl()}`;
+        const copyBtn = document.getElementById('copyShareBtn');
+        const originalText = copyBtn.innerHTML;
+
+        try {
+            if (navigator.clipboard && window.isSecureContext) {
+                await navigator.clipboard.writeText(shareContent);
+            } else {
+                const textArea = document.createElement('textarea');
+                textArea.value = shareContent;
+                textArea.style.position = 'fixed';
+                textArea.style.opacity = '0';
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+            }
+
+            copyBtn.innerHTML = '<i class="fa-solid fa-check"></i> Copied';
+            setTimeout(() => {
+                copyBtn.innerHTML = originalText;
+            }, 1200);
+        } catch (_) {
+            alert('Copy failed. Please copy manually from browser address bar.');
+        }
+    }
+
+    function formatAmount(amount) {
+        const numericAmount = Number(amount) || 0;
+        return `₹${new Intl.NumberFormat('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(numericAmount)}`;
+    }
+
+    function openPaymentResultModal(result) {
+        const isSuccess = result.paymentStatus === 'success';
+        const header = document.getElementById('paymentResultHeader');
+        const badge = document.getElementById('paymentStatusBadge');
+        const subtext = document.getElementById('paymentResultSubtext');
+
+        if (isSuccess) {
+            header.className = 'px-6 py-4 text-white bg-green-600';
+            badge.className = 'text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-green-100 text-green-700';
+            badge.innerText = 'Success';
+            subtext.innerText = 'Your donation has been received successfully.';
+        } else {
+            header.className = 'px-6 py-4 text-white bg-red-600';
+            badge.className = 'text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-red-100 text-red-700';
+            badge.innerText = 'Failed';
+            subtext.innerText = 'Your donation could not be completed.';
+        }
+
+        document.getElementById('paymentAmount').innerText = formatAmount(result.amount);
+        document.getElementById('paymentDateTime').innerText = result.paidAt
+            ? new Date(result.paidAt).toLocaleString('en-IN')
+            : new Date().toLocaleString('en-IN');
+        document.getElementById('paymentTxnId').innerText = result.txnid || '-';
+        document.getElementById('paymentGatewayTxnId').innerText = result.gatewayTxnId || '-';
+        document.getElementById('paymentMode').innerText = result.paymentMode || '-';
+        document.getElementById('paymentBankRef').innerText = result.bankRef || '-';
+        document.getElementById('paymentDonor').innerText = result.name || '-';
+        document.getElementById('paymentEmail').innerText = result.email || '-';
+        document.getElementById('paymentMessage').innerText = result.message || 'Transaction status received from payment gateway.';
+
+        document.getElementById('paymentResultModal').classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    }
+
+    (function hydratePageFromQuery() {
+        const params = new URLSearchParams(window.location.search);
+        const amount = Number(params.get('amount')) || 0;
+        const type = params.get('type');
+
+        if (type === 'monthly' || type === 'once') {
+            toggleDonationType(type);
+        }
+
+        if (amount > 0) {
+            document.getElementById('customAmount').value = amount;
+            handleInput(amount);
+        }
+
+        const paymentStatus = params.get('paymentStatus');
+        if (paymentStatus === 'success' || paymentStatus === 'failed') {
+            openPaymentResultModal({
+                paymentStatus,
+                txnid: params.get('txnid'),
+                amount: params.get('amount'),
+                gatewayTxnId: params.get('gatewayTxnId'),
+                paymentMode: params.get('paymentMode'),
+                bankRef: params.get('bankRef'),
+                name: params.get('name'),
+                email: params.get('email'),
+                message: params.get('message'),
+                paidAt: params.get('paidAt'),
+            });
+        }
+    })();
+</script>
+
+<%- include('partials/footer') %>
